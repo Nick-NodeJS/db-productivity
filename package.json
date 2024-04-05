@@ -1,9 +1,10 @@
 {
-  "name": "db-productivuty-test",
+  "name": "db-productivity",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
-  "private": true,
+  "description": "Nest.js + Prisma + PostgreSQL + MongoDB + Swagger",
+  "author": "Nick-NodeJS",
+  "private": false,
+  "homepage": "https://github.com/Nick-NodeJS/db-productivity.git",
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
