@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output = "../src/databases/prizma/mongodb/client"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("MONGODB_URL")
+}
+
+model User {
+  id String  @id @default(auto()) @map("_id") @db.ObjectId
+  activeProfile Profiles @default(CyberScherlock) @map("active_profile")
+  cyberSherlock CyberScherlockType?
+  google  GoogleType?
+  facebook FacebookType?
+  createdAt DateTime @map("created_at") @default(now())
+  updatedAt DateTime @map("updated_at") @default(now())
+}
+
+enum Profiles {
+  CyberScherlock
+  Facebook
+  Google
+}
+
+type CyberScherlockType {
+  userId String @map("user_id") @db.ObjectId
+  name String
+  email String
+  emailVerified Boolean @map("email_verified")
+  phone String
+  phone_verified Boolean @map("phone_verified")
+  picture String
+  hash String
+}
+
+type GoogleType {
+  userId String @map("user_id") @db.ObjectId
+  name String
+  email String
+  emailVerified Boolean @map("email_verified")
+  picture String
+  hash String
+}
+
+type FacebookType {
+  userId String @map("user_id") @db.ObjectId
+  name String
+  email String
+  emailVerified Boolean @map("email_verified")
+  picture String
+  hash String
+}
